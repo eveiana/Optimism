@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimistic Africa: Africa's Story is Changing. The Data Agrees.</title>
+  <meta name="description" content="An interactive companion to Optimistic Africa by Moky Makura and Dr Anand Kulkarni. Explore the Funnel of Optimism, 11 chapters of empirical data, and test your perceptions with the Optimism Quiz." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            bebas: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brandOrange: '#D9531E',
+            brandMagenta: '#E10078',
+            brandGreen: '#126B3E',
+            brandTeal: '#00A887',
+            brandPurple: '#4A154B',
+            brandNavy: '#1D4ED8',
+            brandCream: '#FFFDF9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FFFDF9;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+    .font-bebas {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1ECE1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C8BFB0;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A89F90;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#E10078] selection:text-white">
+
+  <!-- Top Progress Line -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-[#D9531E] via-[#00A887] to-[#E10078] z-50 transition-all duration-75" style="width: 0%"></div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#F0EBE1] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-full bg-[#E10078] flex items-center justify-center font-bebas text-2xl text-white font-bold tracking-tight shadow-md">
+          O
+        </span>
+        <div class="flex flex-col">
+          <span class="font-bebas text-2xl tracking-wider text-[#1E293B] leading-none">OPTIMISTIC AFRICA</span>
+          <span class="text-[10px] tracking-widest text-[#78716C] uppercase font-bold">THE EVIDENCE OF PROGRESS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-[#475569]">
+        <a href="#funnel" class="hover:text-[#126B3E] transition-colors">The Funnel</a>
+        <a href="#chapters" class="hover:text-[#126B3E] transition-colors">11 Chapters</a>
+        <a href="#evidence" class="hover:text-[#126B3E] transition-colors">The Evidence</a>
+        <a href="#quiz" class="hover:text-[#126B3E] transition-colors">Take the Quiz</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="#get-book" class="px-6 py-2.5 rounded-full bg-[#4A154B] hover:bg-[#38103A] text-white font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md transition-all">
+          GET THE BOOK
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-12 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Hero Column -->
+      <div class="lg:col-span-6 space-y-6">
+        <!-- Byline -->
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#D9531E]"></span>
+          <p class="text-xs sm:text-sm font-semibold text-[#78716C] tracking-wide">
+            A book by <strong class="text-[#1E293B]">Moky Makura &amp; Dr Anand Kulkarni</strong>
+          </p>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-[80px] leading-[0.92] tracking-tight text-[#D9531E]">
+          AFRICA'S STORY IS CHANGING.<br />
+          THE DATA AGREES.
+        </h1>
+
+        <!-- Lead Paragraph matching PDF with styled highlights -->
+        <p id="hero-manifesto-text" class="text-base sm:text-lg text-[#334155] leading-relaxed max-w-xl font-normal transition-all duration-700">
+          Negative perceptions cost the continent an estimated <span class="inline-block px-2 py-0.5 rounded-md font-bold text-[#D9531E] bg-[#FFF3EE] border border-[#FDBA74]/50 shadow-xs">$4.2 billion</span> every year in higher borrowing costs — money that could fund schools, hospitals, roads and clean water. <span class="font-semibold text-[#0E4A28]">Optimistic Africa</span> asks a different question: <span class="text-[#1E293B] font-medium">are we overlooking the evidence of <span class="text-[#0E4A28] font-semibold">extraordinary progress?</span></span>
+        </p>
+
+        <!-- CTAs: Green & Purple Pills -->
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a href="#quiz" class="px-7 py-3.5 rounded-full bg-[#126B3E] hover:bg-[#0E5431] text-white font-bold text-sm tracking-wider transition-all shadow-md uppercase inline-flex items-center gap-2">
+            <span>TAKE THE OPTIMISM QUIZ</span>
+            <span>&rarr;</span>
+          </a>
+          <a href="#get-book" class="px-7 py-3.5 rounded-full bg-[#4A154B] hover:bg-[#38103A] text-white font-bold text-sm tracking-wider transition-all shadow-md uppercase">
+            GET THE BOOK
+          </a>
+        </div>
+
+        <!-- Footnote -->
+        <div class="pt-2 text-xs sm:text-sm text-[#64748B]">
+          Edited by <strong class="text-[#334155]">Dianna Games</strong> · Hundreds of data points, indices &amp; real stories from across the continent
+        </div>
+      </div>
+
+      <!-- Right Hero Column: Africa Map with 3 Floating Badges -->
+      <div class="lg:col-span-6 relative flex justify-center items-center">
+        <div class="relative w-full max-w-[500px]">
+          <!-- Faceted Africa Map Vector -->
+          <svg viewBox="0 0 450 500" class="w-full h-auto drop-shadow-xl select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#FDFBF7" stroke-width="1.5" stroke-linejoin="round">
+              <!-- North Africa Facets -->
+              <polygon points="120,40 220,35 250,90 170,110" fill="#E8833A"/>
+              <polygon points="220,35 320,50 310,120 250,90" fill="#F09B4E"/>
+              <polygon points="320,50 370,110 320,160 310,120" fill="#D66D26"/>
+              <!-- West Africa / Sahel Facets -->
+              <polygon points="60,110 120,40 170,110 120,160" fill="#D05A20"/>
+              <polygon points="30,150 60,110 120,160 70,210" fill="#E2742F"/>
+              <polygon points="70,210 120,160 180,180 140,240" fill="#C54E1B"/>
+              <!-- Central / East Horn Facets -->
+              <polygon points="170,110 250,90 270,170 180,180" fill="#F3A962"/>
+              <polygon points="250,90 310,120 360,180 270,170" fill="#E8833A"/>
+              <polygon points="310,120 370,110 420,180 360,180" fill="#D05A20"/>
+              <polygon points="180,180 270,170 280,260 190,260" fill="#D96825"/>
+              <polygon points="270,170 360,180 340,270 280,260" fill="#EA8E45"/>
+              <!-- Equatorial / Congo Basin Facets -->
+              <polygon points="140,240 180,180 190,260 140,310" fill="#B84417"/>
+              <polygon points="190,260 280,260 270,340 190,340" fill="#CD5B1F"/>
+              <!-- Southern Africa Facets -->
+              <polygon points="140,310 190,340 220,420 160,400" fill="#A83913"/>
+              <polygon points="190,340 270,340 260,430 220,420" fill="#BF4F19"/>
+              <polygon points="270,340 340,270 330,380 260,430" fill="#D76624"/>
+              <polygon points="220,420 260,430 240,480 200,460" fill="#8E2D0E"/>
+              <!-- Madagascar -->
+              <polygon points="370,310 395,330 380,420 360,390" fill="#C54E1B"/>
+            </g>
+          </svg>
+
+          <!-- Floating Badge 1: 39 Countries Peace Narrative -->
+          <div class="absolute -top-4 -left-4 sm:top-2 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-xl border border-[#EDE4D5] max-w-[190px]">
+            <span class="font-bebas text-3xl sm:text-4xl text-[#00A887] leading-none block">39</span>
+            <span class="text-xs font-semibold text-[#334155] leading-tight block mt-0.5">
+              countries with a pervasive peace narrative
+            </span>
+          </div>
+
+          <!-- Floating Badge 2: 21 Nations in Top 100 -->
+          <div class="absolute top-1/2 -right-4 sm:-right-8 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-xl border border-[#EDE4D5] max-w-[200px]">
+            <span class="font-bebas text-3xl sm:text-4xl text-[#D9531E] leading-none block">21</span>
+            <span class="text-xs font-semibold text-[#334155] leading-tight block mt-0.5">
+              nations rank in the world's top 100 most peaceful
+            </span>
+          </div>
+
+          <!-- Floating Badge 3: 700+ Tech Hubs -->
+          <div class="absolute -bottom-4 left-4 sm:bottom-0 sm:left-2 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-xl border border-[#EDE4D5] max-w-[200px]">
+            <span class="font-bebas text-3xl sm:text-4xl text-[#4A154B] leading-none block">700+</span>
+            <span class="text-xs font-semibold text-[#334155] leading-tight block mt-0.5">
+              tech &amp; innovation hubs, up from fewer than 20
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Metrics Bar matching PDF ($104B | 60-70% | 75%+ | 14/20) -->
+  <section class="bg-[#00A887] text-white py-10 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+        
+        <!-- Metric 1 -->
+        <div class="pt-4 md:pt-0 px-2 sm:px-4">
+          <div class="font-bebas text-5xl sm:text-6xl tracking-tight leading-none text-white">$104B</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-50 mt-2 leading-snug">
+            sent home in remittances in 2024 — more than aid and FDI combined
+          </div>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="pt-4 md:pt-0 px-2 sm:px-4">
+          <div class="font-bebas text-5xl sm:text-6xl tracking-tight leading-none text-white">60-70%</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-50 mt-2 leading-snug">
+            of Africans are under 25-30, a demographic dividend in waiting
+          </div>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="pt-4 md:pt-0 px-2 sm:px-4">
+          <div class="font-bebas text-5xl sm:text-6xl tracking-tight leading-none text-white">75%+</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-50 mt-2 leading-snug">
+            of young Africans intend to start a business in the next five years
+          </div>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="pt-4 md:pt-0 px-2 sm:px-4">
+          <div class="font-bebas text-5xl sm:text-6xl tracking-tight leading-none text-white">14/20</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-50 mt-2 leading-snug">
+            of Africa's top governed nations improved their scores in a decade
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Book Exists -->
+  <section class="py-20 sm:py-24 bg-[#FFFDF9] border-b border-[#F0EBE1]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-5">
+          <span class="inline-block text-xs sm:text-sm font-bold tracking-widest text-[#E01A8A] uppercase">
+            WHY THIS BOOK EXISTS
+          </span>
+          <h2 class="font-bebas text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-[#4A154B] tracking-tight">
+            NOT A BOOK ABOUT<br />
+            PRETENDING THE<br />
+            CHALLENGES DON'T EXIST.
+          </h2>
+          <div class="space-y-4 text-base text-[#334155] leading-relaxed pt-1 font-normal">
+            <p>
+              It's a book about recognizing the evidence of progress that too often goes unnoticed. The stories told about Africa shape investment decisions, policy, media coverage and global perception — and for decades, those stories have failed to keep pace with reality.
+            </p>
+            <p>
+              Drawing on hundreds of data points, international indices and real-life stories from across the continent, Optimistic Africa argues that optimism isn't wishful thinking: it's evidence-based. Better narratives create better outcomes: more investment, more tourism, more trade, more innovation.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center items-center">
+          <div class="relative max-w-[280px] sm:max-w-[320px] rounded-2xl overflow-hidden shadow-2xl transition-transform hover:-translate-y-2">
+            <img src="/assets/book_cover_hd.png" alt="Optimistic Africa Official Book Cover" class="w-full h-auto object-contain block select-none" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Funnel of Optimism Framework (Solid Pink #E01A8A matching PDF) -->
+  <section id="funnel" class="py-20 sm:py-28 bg-[#E01A8A] text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      
+      <!-- Tag -->
+      <div class="text-center mb-3">
+        <span class="inline-block text-xs sm:text-sm font-bold tracking-widest text-white/90 uppercase">
+          THE FRAMEWORK
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <div class="max-w-4xl mx-auto text-center mb-6 sm:mb-8">
+        <h2 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight text-white">
+          THE FUNNEL OF OPTIMISM
+        </h2>
+        <p class="mt-4 max-w-3xl mx-auto text-sm sm:text-base md:text-lg font-normal leading-relaxed text-white/95">
+          Optimism, here, isn't rhetorical — it's structural. Peace, governance and solidarity form the foundation. A young population, entrepreneurs, technology, the diaspora and creative industries build the capabilities. Together they produce the outcomes: higher growth, rising incomes, falling poverty. Foundations enable capabilities. Capabilities generate outcomes. Outcomes strengthen optimism — and the cycle compounds.
+        </p>
+      </div>
+
+      <!-- Slogan Banner -->
+      <div class="text-center mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/15 border border-white/30 text-white font-bebas text-lg sm:text-2xl tracking-widest uppercase shadow-sm">
+          <span>RISING INCOMES • FALLING POVERTY • A WIDER MIDDLE CLASS</span>
+        </div>
+      </div>
+
+      <!-- Central Diagram with Strainer and Enamel Mug -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
+          <!-- Left Badges matching reference -->
+          <div class="hidden md:flex md:col-span-3 flex-col justify-between h-[490px] py-4 text-right pr-6">
+            <div class="pt-2">
+              <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-[#E01A8A] font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md">
+                <span class="w-2.5 h-2.5 rounded-full border-2 border-[#E01A8A]"></span>
+                OUTCOMES
+              </span>
+            </div>
+            <div class="my-auto">
+              <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-[#E01A8A] font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md">
+                <span class="w-2.5 h-2.5 rounded-full border-2 border-[#E01A8A]"></span>
+                CAPABILITIES
+              </span>
+            </div>
+            <div class="pb-6">
+              <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-[#E01A8A] font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-md">
+                <span class="w-2.5 h-2.5 rounded-full border-2 border-[#E01A8A]"></span>
+                FOUNDATIONS
+              </span>
+            </div>
+          </div>
+
+          <!-- Canvas / Graphic: Red Sieve, Animated Tea Stream, and Clean Enamel Mug without Flowers -->
+          <div class="col-span-1 md:col-span-6 relative flex flex-col items-center justify-center">
+            <!-- Mobile Badges -->
+            <div class="flex md:hidden flex-wrap items-center justify-center gap-2 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#E01A8A] font-extrabold text-[11px] uppercase shadow-sm">
+                <span class="w-2 h-2 rounded-full border border-[#E01A8A]"></span>
+                OUTCOMES
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#E01A8A] font-extrabold text-[11px] uppercase shadow-sm">
+                <span class="w-2 h-2 rounded-full border border-[#E01A8A]"></span>
+                CAPABILITIES
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#E01A8A] font-extrabold text-[11px] uppercase shadow-sm">
+                <span class="w-2 h-2 rounded-full border border-[#E01A8A]"></span>
+                FOUNDATIONS
+              </span>
+            </div>
+
+            <div class="relative w-full max-w-[420px] aspect-[1024/1041] mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white/40 bg-white/5 select-none">
+              <!-- Authentic Funnel Image Artwork -->
+              <img src="/assets/funnel.png" alt="The Funnel of Optimism Artwork" class="w-full h-full object-contain select-none" />
+            </div>
+
+            <!-- Mobile Chapter Summary -->
+            <div class="flex md:hidden flex-col items-center text-center gap-2 mt-4 text-xs font-bebas tracking-wider text-white">
+              <div class="bg-white/10 rounded-xl px-4 py-1.5 w-full max-w-sm">
+                <span class="text-white/70 block text-[9px] font-sans font-bold uppercase tracking-widest">Outcomes</span>
+                <span class="text-sm">OPTIMISM INDEX · GROWTH AND PROSPERITY</span>
+              </div>
+              <div class="bg-white/10 rounded-xl px-4 py-1.5 w-full max-w-sm">
+                <span class="text-white/70 block text-[9px] font-sans font-bold uppercase tracking-widest">Capabilities</span>
+                <span class="text-sm">CREATIVE CITIES · INNOVATION &amp; TECH · DIASPORA · ENTREPRENEURSHIP · YOUTH</span>
+              </div>
+              <div class="bg-white/10 rounded-xl px-4 py-1.5 w-full max-w-sm">
+                <span class="text-white/70 block text-[9px] font-sans font-bold uppercase tracking-widest">Foundations</span>
+                <span class="text-sm">PEACE · GOVERNANCE · SOLIDARITY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Pillars List matching reference -->
+          <div class="hidden md:flex md:col-span-3 flex-col justify-between h-[490px] py-4 text-left pl-6">
+            <div class="pt-2 space-y-1">
+              <div class="font-bebas text-xl sm:text-2xl tracking-wider text-white leading-tight">
+                <div>OPTIMISM INDEX</div>
+                <div>GROWTH AND PROSPERITY</div>
+              </div>
+            </div>
+            <div class="my-auto space-y-1">
+              <div class="font-bebas text-xl sm:text-2xl tracking-wider text-white leading-tight">
+                <div>CREATIVE CITIES</div>
+                <div>INNOVATION &amp; TECH</div>
+                <div>DIASPORA &amp; ICT</div>
+                <div>ENTREPRENEURSHIP</div>
+                <div>YOUTH</div>
+              </div>
+            </div>
+            <div class="pb-6 space-y-1">
+              <div class="font-bebas text-xl sm:text-2xl tracking-wider text-white leading-tight">
+                <div>PEACE</div>
+                <div>GOVERNANCE</div>
+                <div>SOLIDARITY</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3 Columns at Bottom of Magenta Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-4 border-t border-white/20">
+        <div class="rounded-2xl p-6 bg-white/10 border border-white/20">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-white/70 block mb-1">TIER 01</span>
+          <h3 class="font-bebas text-3xl text-white tracking-wide mb-2">FOUNDATIONS</h3>
+          <p class="text-sm text-white/90 leading-relaxed">
+            Peace, governance and solidarity are threshold conditions. They don't need to be perfect — but they must exist to enable progress.
+          </p>
+        </div>
+        <div class="rounded-2xl p-6 bg-white/10 border border-white/20">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-white/70 block mb-1">TIER 02</span>
+          <h3 class="font-bebas text-3xl text-white tracking-wide mb-2">CAPABILITIES</h3>
+          <p class="text-sm text-white/90 leading-relaxed">
+            Youth, entrepreneurship, technology, diaspora and creative industries — the productive forces that compound over time.
+          </p>
+        </div>
+        <div class="rounded-2xl p-6 bg-white/10 border border-white/20">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-white/70 block mb-1">TIER 03</span>
+          <h3 class="font-bebas text-3xl text-white tracking-wide mb-2">OUTCOMES</h3>
+          <p class="text-sm text-white/90 leading-relaxed">
+            Higher growth, rising incomes, poverty reduction and expanding middle classes — proof the funnel is working.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11 Chapters Section -->
+  <section id="chapters" class="py-20 sm:py-28 bg-[#FFFDF9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
+        <div class="lg:col-span-7">
+          <h2 class="font-bebas text-5xl sm:text-6xl md:text-7xl text-[#4A154B] leading-[0.92] tracking-tight">
+            ELEVEN CHAPTERS.<br />
+            ONE ARGUMENT.
+          </h2>
+        </div>
+        <div class="lg:col-span-5 text-sm sm:text-base text-[#475569] leading-relaxed">
+          Each chapter unpacks one layer of the Funnel of Optimism — grounded in international indices, comparative data and stories from across the continent.
+        </div>
+      </div>
+
+      <!-- Chapter Cards List -->
+      <div class="space-y-4" id="chaptersContainer">
+        <!-- Ch 01 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#2E7D32] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch1')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 01</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">PEACE</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch1-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#1B5E20] text-[#A5D6A7] inline-block">FOUNDATION</span>
+            <p class="text-sm sm:text-base">While conflicts capture front pages, the majority of African states enjoy prolonged peace, with nations like Mauritius, Ghana, Botswana, and Sierra Leone outranking major Western powers on global peace indices.</p>
+            <div class="text-xs opacity-80">Rank: #28 Mauritius Global Peace Rank (Ahead of UK #34 and France #66)</div>
+          </div>
+        </div>
+
+        <!-- Ch 02 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#C0392B] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch2')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 02</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">GOVERNANCE</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch2-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#962D22] text-[#FADBD8] inline-block">FOUNDATION</span>
+            <p class="text-sm sm:text-base">Institutional accountability, democratic elections, and constitutional term limits are taking firmer root than ever before, with 14 of the top 20 countries improving governance over the last decade.</p>
+            <div class="text-xs opacity-80">Mo Ibrahim Index: +4.8 points average gain across top 20 nations</div>
+          </div>
+        </div>
+
+        <!-- Ch 03 (Expanded in PDF) -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#0D47A1] text-white shadow-lg cursor-pointer chapter-accordion" onclick="toggleAccordion('ch3')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 03</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">SOLIDARITY</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">-</span>
+          </div>
+          <div id="ch3-body" class="pt-4 mt-4 border-t border-white/20">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div class="md:col-span-8 space-y-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#D81B60] text-white inline-block">FOUNDATION</span>
+                <p class="text-base sm:text-lg">
+                  From stokvels to harambee to tontines, mutual aid is Africa's original safety net — and its financial engine, moving more money than aid or investment.
+                </p>
+                <p class="text-xs text-blue-100">
+                  Core Takeaway: Chamas, esusu, tontines, and digital diaspora transfers represent decentralized social security systems that outmuscle formal multilateral financing 2-to-1.
+                </p>
+              </div>
+              <div class="md:col-span-4 bg-black/20 p-6 rounded-2xl text-center flex flex-col items-center">
+                <div class="font-bebas text-5xl sm:text-6xl text-white leading-none">$104B</div>
+                <div class="text-xs font-semibold mt-1">in remittances, 2024</div>
+                <div class="text-[11px] opacity-75 mt-0.5">More than all foreign aid ($53B) and FDI ($48B) combined</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ch 04 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#F4D03F] text-[#1A1A1A] shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch4')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 04</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">INNOVATION &amp; TECHNOLOGY</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch4-body" class="hidden pt-4 mt-4 border-t border-black/15 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#D4AC0D] text-[#1A1A1A] inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">Africa leapfrogged landlines to smartphones, and legacy banks to mobile money, processing 70% of global mobile money volume.</p>
+          </div>
+        </div>
+
+        <!-- Ch 05 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#D81B80] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch5')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 05</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">ENTREPRENEURSHIP</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch5-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#AD1457] text-[#F8BBD0] inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">The world's highest female entrepreneurship rate: over 26% of businesses in sub-Saharan Africa are female-led.</p>
+          </div>
+        </div>
+
+        <!-- Ch 06 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#E65100] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch6')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 06</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">YOUTH</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch6-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#BF360C] text-[#FFCCBC] inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">Over 60% of Africa is under 25. By 2050, 1 in 4 people on Earth will be African.</p>
+          </div>
+        </div>
+
+        <!-- Ch 07 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#0288D1] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch7')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 07</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">ICT &amp; AFRICA</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch7-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#01579B] text-[#B3E5FC] inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">Subsea fiber optic rings and terrestrial microwave networks driving exponential broadband adoption.</p>
+          </div>
+        </div>
+
+        <!-- Ch 08 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#303F9F] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch8')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 08</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">DIASPORA</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch8-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#1A237E] text-[#C5CAE9] inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">200+ million global diaspora remitting capital, skills, intellectual property and international networks.</p>
+          </div>
+        </div>
+
+        <!-- Ch 09 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#D35400] text-[#F4D03F] shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch9')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 09</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">CREATIVE CITIES</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch9-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2 text-white">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#A04000] text-yellow-200 inline-block">CAPABILITY</span>
+            <p class="text-sm sm:text-base">Afrobeats, Nollywood, fashion, visual arts and architecture taking global stages by storm.</p>
+          </div>
+        </div>
+
+        <!-- Ch 10 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#6A1B9A] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch10')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 10</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">GROWTH &amp; PROSPERITY</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch10-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#4A148C] text-[#E1BEE7] inline-block">OUTCOME</span>
+            <p class="text-sm sm:text-base">GDP expansion at 2-3x the pace of developed economies, powered by industrial zones and AfCFTA free trade.</p>
+          </div>
+        </div>
+
+        <!-- Ch 11 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-[#00695C] text-white shadow-md cursor-pointer chapter-accordion" onclick="toggleAccordion('ch11')">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-wider opacity-80 block">Chapter 11</span>
+              <h3 class="font-bebas text-3xl sm:text-4xl">THE OPTIMISM INDEX</h3>
+            </div>
+            <span class="text-2xl font-bold font-mono">+</span>
+          </div>
+          <div id="ch11-body" class="hidden pt-4 mt-4 border-t border-white/20 space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#004D40] text-[#80CBC4] inline-block">OUTCOME</span>
+            <p class="text-sm sm:text-base">A composite benchmark measuring structural progress, self-belief, and realistic developmental momentum across all 54 nations.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Evidence Section matching image.png -->
+  <section id="evidence" class="pt-16 sm:pt-20 bg-[#FFFDF9] border-t border-[#F0EBE1] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-10 sm:mb-16">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="text-left space-y-2">
+          <span class="block text-xs sm:text-sm font-extrabold tracking-widest text-[#0EA5E9] uppercase">THE EVIDENCE</span>
+          <h2 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-[82px] text-[#4A154B] leading-[0.92] tracking-tight">
+            A FEW CHARTS THE<br />
+            HEADLINES LEAVE OUT.
+          </h2>
+        </div>
+        <div class="md:max-w-xs lg:max-w-sm text-left pb-2">
+          <p class="text-sm sm:text-base md:text-[17px] text-[#334155] leading-relaxed font-normal">
+            Three small proof points, pulled straight from the book's indices — peace, poverty and growth.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blue Horizon Band -->
+    <div class="relative bg-[#2563EB] pt-16 sm:pt-24 pb-20 sm:pb-28 px-4 sm:px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto relative">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch relative">
+          
+          <!-- Card 1: Peace -->
+          <div class="relative rounded-[32px] p-7 sm:p-9 bg-[#C07428] text-white shadow-2xl flex flex-col justify-between z-10">
+            <div class="absolute -top-16 sm:-top-20 md:-top-24 right-4 sm:right-8 w-36 sm:w-44 md:w-50 pointer-events-none z-30 select-none">
+              <img src="/assets/bird.png" alt="Peace Dove" class="w-full h-auto object-contain drop-shadow-md" />
+            </div>
+            <div>
+              <h3 class="font-bebas text-3xl sm:text-4xl lg:text-[44px] text-white tracking-wide leading-[0.92] mb-2">
+                MORE PEACEFUL THAN<br />YOU'D GUESS
+              </h3>
+              <p class="text-xs sm:text-[13px] text-amber-100/90 font-normal leading-snug mb-12">
+                2020 Global Peace Index rank<br />(lower = more peaceful)
+              </p>
+              <div class="py-6 my-2">
+                <div class="relative pt-6 pb-6">
+                  <div class="w-full h-0.5 bg-white/40 relative">
+                    <div class="absolute left-[8%] -top-1.5 flex flex-col items-center">
+                      <div class="text-[11px] font-semibold text-white whitespace-nowrap -top-5 absolute">Mauritius - #24</div>
+                      <div class="w-3.5 h-3.5 rounded-full bg-[#EC4899] ring-2 ring-white/60"></div>
+                    </div>
+                    <div class="absolute left-[38%] -top-1.5 flex flex-col items-center">
+                      <div class="w-3.5 h-3.5 rounded-full bg-[#06B6D4] ring-2 ring-white/60"></div>
+                      <div class="text-[11px] font-semibold text-cyan-100 whitespace-nowrap top-4 absolute">#46 - Morocco</div>
+                    </div>
+                    <div class="absolute right-[8%] -top-1.5 flex flex-col items-center">
+                      <div class="text-[11px] font-semibold text-white whitespace-nowrap -top-5 absolute">South Sudan - #160</div>
+                      <div class="w-3.5 h-3.5 rounded-full bg-[#FACC15] ring-2 ring-white/60"></div>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-[10.5px] text-amber-100/90 pt-8 font-medium">
+                    <span>Most Peaceful</span>
+                    <span>Least Peaceful</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/20 text-[10.5px] text-amber-100/80 mt-6">
+              Source: Global Peace Index (2020) cited in <em>Optimistic Growth</em>
+            </div>
+          </div>
+
+          <!-- Card 2: Poverty -->
+          <div class="relative rounded-[32px] p-7 sm:p-9 bg-[#9A9318] text-white shadow-2xl flex flex-col justify-between z-20">
+            <div class="absolute -top-28 sm:-top-36 md:-top-44 lg:-top-52 xl:-top-56 -right-6 sm:-right-8 lg:-right-14 xl:-right-16 w-64 sm:w-72 md:w-80 lg:w-[340px] xl:w-[370px] pointer-events-none z-30 select-none">
+              <img src="/assets/girl.png" alt="Leaping Figure" class="w-full h-auto object-contain drop-shadow-2xl" />
+            </div>
+            <div>
+              <h3 class="font-bebas text-3xl sm:text-4xl lg:text-[44px] text-white tracking-wide leading-[0.92] mb-2">
+                POVERTY IN<br />FREEFALL -<br />MOROCCO
+              </h3>
+              <p class="text-xs sm:text-[13px] text-yellow-100/90 font-normal leading-snug mb-12">
+                Share of population below the international<br />poverty line
+              </p>
+              <div class="space-y-4 py-4">
+                <div class="flex items-center gap-4">
+                  <span class="font-sans text-xs sm:text-sm font-semibold text-white w-12">2001</span>
+                  <div class="flex-1 flex items-center">
+                    <div class="h-6 rounded-full bg-[#22D3EE] text-[#083344] font-bold text-[11px] px-3 flex items-center justify-end w-[68%]">2.1%</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="font-sans text-xs sm:text-sm font-semibold text-white w-12">2020</span>
+                  <div class="flex-1 flex items-center">
+                    <div class="h-6 rounded-full bg-[#D6E617] text-[#3F4305] font-bold text-[11px] px-2.5 flex items-center justify-center w-[20%]">0.4%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/20 text-[10.5px] text-yellow-100/80 mt-6">
+              Source: IMF/World Bank indicators / Database
+            </div>
+          </div>
+
+          <!-- Card 3: GDP Growth (Teal #14858B matching image.png) -->
+          <div class="relative rounded-[32px] p-7 sm:p-9 bg-[#14858B] text-white shadow-2xl flex flex-col justify-between z-10">
+            <div>
+              <h3 class="font-bebas text-3xl sm:text-4xl lg:text-[44px] text-[#EFF5EA] tracking-wide leading-[0.92] mb-2" aria-label="GROWTH. AT TWO TO THREE TIMES THE PACE">
+                <span class="inline-flex items-center" aria-hidden="true">
+                  <svg viewBox="0 0 100 100" class="w-[0.76em] h-[0.76em] inline-block shrink-0 mr-1 text-[#EFF5EA] fill-none stroke-current" style="stroke-width: 8.5; stroke-linecap: butt; stroke-linejoin: miter;">
+                    <path d="M 83 21 A 44 44 0 1 0 94 50 L 50 50"></path>
+                  </svg>
+                  <span>ROWTH. AT TWO TO</span>
+                </span><br />
+                <span>THREE TIMES THE PACE</span>
+              </h3>
+              <p class="text-xs sm:text-[13px] text-teal-100/90 font-normal leading-snug mb-8">
+                Real GDP growth, 2024 (%)
+              </p>
+              <div class="pt-2 pb-2">
+                <div class="flex items-end justify-between h-44 gap-1.5 sm:gap-2 pb-2">
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">7.8</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#FACC15] h-[96%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">Morocco</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">2.6</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#4A154B] h-[33%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">US avg.</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">1.7</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#84CC16] h-[22%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">OECD avg.</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">4.8</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#DC2626] h-[60%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">China</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">6.8</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#1E293B] h-[85%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">India</span>
+                  </div>
+                  <div class="flex-1 flex flex-col items-center h-full justify-end">
+                    <span class="text-[11px] font-bold text-white font-mono mb-1">4.1</span>
+                    <div class="w-full max-w-[28px] rounded-t-sm bg-[#7E22CE] h-[52%]"></div>
+                    <span class="text-[9.5px] sm:text-[10px] font-semibold text-teal-100 mt-2 text-center truncate w-full">Africa avg.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/20 text-[10.5px] text-teal-100/80 mt-6">
+              Source: IMF/World Bank projections cited in <em>Optimistic Growth</em>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optimism Quiz Section -->
+  <section id="quiz" class="py-20 sm:py-28 bg-[#FFFDF9] border-t border-[#F0EBE1]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+        <div class="lg:col-span-7 space-y-2">
+          <span class="block text-xs sm:text-sm font-bold tracking-widest text-[#E05A2B] uppercase">EXERCISE YOUR OPTIMISM MUSCLE</span>
+          <h2 class="font-bebas text-4xl sm:text-6xl text-[#1E293B] leading-none">HOW WELL DO YOU REALLY KNOW AFRICA?</h2>
+        </div>
+        <div class="lg:col-span-5 text-sm sm:text-base text-slate-600">
+          Hans Rosling showed that global instincts lag decades behind reality. Test your knowledge with empirical data points drawn from the book.
+        </div>
+      </div>
+
+      <!-- Quiz Card Box -->
+      <div class="rounded-3xl bg-[#1D4ED8] text-white p-6 sm:p-10 shadow-2xl">
+        <div id="quizIntro">
+          <div class="max-w-xl space-y-4">
+            <span class="text-xs font-bold tracking-widest text-cyan-200 uppercase block">BEFORE YOU BEGIN</span>
+            <h3 class="font-bebas text-4xl sm:text-5xl">TAKE A GUESS BEFORE YOU TAKE THE FACTS.</h3>
+            <p class="text-sm sm:text-base text-blue-100">
+              Answer the interactive questions to calculate your Optimism Persona score, complete with detailed explanations.
+            </p>
+            <button onclick="startQuiz()" class="px-8 py-3.5 rounded-full bg-[#E01A8A] hover:bg-[#C2185B] text-white font-bold text-sm tracking-wider uppercase transition-colors shadow-lg cursor-pointer">
+              START THE QUIZ NOW
+            </button>
+          </div>
+        </div>
+
+        <div id="quizActive" class="hidden space-y-6">
+          <div class="flex justify-between items-center text-xs text-blue-200 font-bold border-b border-white/20 pb-3">
+            <span id="quizTierLabel" class="px-2.5 py-1 rounded bg-white/20 uppercase">Foundations</span>
+            <span id="quizProgressLabel">Question 1 of 5</span>
+          </div>
+
+          <h4 id="quizQuestionText" class="text-xl sm:text-2xl font-bold leading-snug">Question text goes here</h4>
+
+          <div id="quizOptionsContainer" class="space-y-3">
+            <!-- Options dynamically injected -->
+          </div>
+
+          <div id="quizFeedback" class="hidden p-5 rounded-2xl bg-black/30 border border-white/20 space-y-3">
+            <div id="quizResultTag" class="text-xs font-bold uppercase inline-block px-3 py-1 rounded bg-emerald-500">Correct</div>
+            <p id="quizExplanationText" class="text-sm text-blue-100 leading-relaxed"></p>
+            <button onclick="nextQuestion()" class="px-6 py-2.5 rounded-full bg-[#E01A8A] text-white font-bold text-xs uppercase tracking-wider shadow">
+              NEXT QUESTION &rarr;
+            </button>
+          </div>
+        </div>
+
+        <div id="quizResults" class="hidden text-center py-6 space-y-6 max-w-xl mx-auto">
+          <div class="text-xs font-bold tracking-widest text-blue-200 uppercase">YOUR OPTIMISM SCORE</div>
+          <div class="font-bebas text-7xl text-[#A3E635]" id="quizFinalScore">4 / 5</div>
+          <div class="p-5 rounded-2xl bg-blue-900/50 border border-white/20 text-left">
+            <h4 class="font-bold text-xl text-white italic mb-1" id="quizPersonaTitle">The Evidence-Based Optimist</h4>
+            <p class="text-sm text-blue-100" id="quizPersonaDesc">Your instincts are well calibrated to the data. You already read Africa the way this book does.</p>
+          </div>
+          <button onclick="startQuiz()" class="px-7 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-xs uppercase tracking-wider">
+            RETAKE QUIZ
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Get The Book Section -->
+  <section id="get-book" class="py-20 sm:py-28 bg-[#FFFDF9] border-t border-[#F0EBE1]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs sm:text-sm font-bold tracking-widest text-[#E01A8A] uppercase block">GET THE BOOK</span>
+          <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl text-[#00A887] leading-[0.92] tracking-tight">
+            READ THE EVIDENCE<br />
+            BEHIND THE OPTIMISM.
+          </h2>
+          <p class="text-base sm:text-lg text-[#334155] max-w-xl">
+            Eleven chapters. Hundreds of data points. A continent's worth of reasons to reconsider the story you've been told.
+          </p>
+          <div class="pt-4 border-t border-[#E2D8C9] space-y-1">
+            <p class="font-bold text-[#1E293B]">A book by Dr Anand Kulkarni</p>
+            <p class="text-xs sm:text-sm text-[#64748B] font-semibold">Supported by Africa No Filter · Foreword by Moky Makura</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl p-8 sm:p-10 bg-[#00A887] text-white shadow-xl">
+            <h3 class="font-bebas text-3xl sm:text-4xl mb-4">BE FIRST TO KNOW</h3>
+            <form onsubmit="handleSignup(event)" class="space-y-4">
+              <input type="email" required placeholder="Enter Email" class="w-full px-6 py-4 rounded-full bg-[#10E09F] text-[#064E3B] placeholder-[#065F46] font-semibold outline-none shadow-inner" />
+              <p class="text-xs text-emerald-100">Leave your email and we'll send the book the moment it's out — plus your optimism quiz results if you'd like a copy.</p>
+              <button type="submit" class="px-8 py-3.5 rounded-full bg-[#E01A8A] hover:bg-[#C2185B] text-white font-bold text-sm uppercase tracking-wider shadow-md transition-colors cursor-pointer">
+                GET THE BOOK
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Author Section (PDF Page 5 Bottom & Page 6 Top) -->
+  <section id="author" class="py-20 sm:py-28 bg-[#DE5541] text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <span class="inline-block px-3 py-1 rounded bg-[#FACC15] text-[#1E293B] font-extrabold text-xs tracking-widest uppercase">ABOUT</span>
+          <h2 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#10F4A0] leading-[0.9] tracking-tight">
+            THE AUTHOR<br />DR ANAND KULKARNI
+          </h2>
+          <div class="space-y-4 text-base sm:text-lg text-white/95 leading-relaxed font-normal pt-1 max-w-2xl">
+            <p>
+              Dr Anand Kulkarni is Chief Economist at the Centre for Optimism, bringing extensive experience across government, academia and think-tanks. An economist and author, he has led major research and policy initiatives and advised organizations as a consultant.
+            </p>
+            <p>
+              He is the author of ten books, including <em>India and the Knowledge Economy: Performance, Perils and Prospects</em>, and is currently writing books on higher education in India and India's path to becoming a developed economy. He holds Masters and PhD degrees in Economics.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-white border-4 border-white max-w-sm sm:max-w-md">
+            <img src="/assets/doctor.jpg" alt="Dr Anand Kulkarni" class="w-full h-auto object-cover object-top aspect-[4/5]" />
+            <div class="p-4 bg-white text-[#1E293B] flex items-center justify-between">
+              <div>
+                <h3 class="font-bold text-base text-[#1E293B]">Dr Anand Kulkarni</h3>
+                <p class="text-xs text-slate-500 font-medium">Chief Economist &amp; Author</p>
+              </div>
+              <span class="text-[11px] font-bold text-[#DE5541] bg-[#FEE2E2] px-2.5 py-1 rounded-full uppercase tracking-wider">Author</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Centre for Optimism (PDF Page 6 Middle) -->
+  <section id="centre-for-optimism" class="py-20 sm:py-28 bg-[#FFFDF9] border-t border-[#F0EBE1]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <span class="inline-block px-3 py-1 rounded bg-[#DE5541] text-white font-extrabold text-xs tracking-widest uppercase">ABOUT</span>
+          <h2 class="font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#182352] leading-[0.9] tracking-tight">
+            THE CENTRE FOR<br />OPTIMISM
+          </h2>
+          <div class="space-y-4 text-base sm:text-lg text-[#334155] leading-relaxed font-normal pt-1 max-w-2xl">
+            <p>
+              The Centre for Optimism is an Australian-based global research and advocacy organization founded in 2018 by former Member of Parliament and Trade Commissioner Victor Perton. It explores and demonstrates how optimism can strengthen leadership, communities and activities, and turn positivity into action.
+            </p>
+            <p>
+              Its work in Africa has included the Nelson Mandela Youth Leadership Summit and the 'Hour of African Optimism'. <em>Optimistic Africa</em> builds on this work, exploring optimism as a force for Africa's development and future.
+            </p>
+          </div>
+          <div class="pt-2">
+            <a href="https://www.centreforoptimism.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#182352] text-white font-bold text-xs uppercase tracking-wider shadow hover:bg-slate-900 transition-colors">
+              Visit The Centre for Optimism &rarr;
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-md rounded-2xl bg-white shadow-xl border border-slate-200 overflow-hidden">
+            <div class="h-2.5 bg-[#EA580C] w-full"></div>
+            <div class="p-8 text-center space-y-4">
+              <div class="font-bebas text-3xl text-[#FB923C] tracking-wider">THE CENTRE FOR OPTIMISM</div>
+              <p class="text-xs text-slate-500">Global Research &amp; Strategic Optimism</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (PDF Page 6 Bottom) -->
+  <footer class="bg-[#4A154B] text-white py-14 border-t border-purple-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center sm:text-left">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6 pb-8 border-b border-white/15">
+        <div>
+          <div class="font-bebas text-2xl tracking-wider">OPTIMISTIC AFRICA</div>
+          <p class="text-xs text-purple-200 mt-1">A book by Moky Makura &amp; Dr Anand Kulkarni · Edited by Dianna Games</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-semibold text-purple-200">
+          <a href="https://africanofilter.org" target="_blank" class="hover:text-white">Africa No Filter</a>
+          <span>·</span>
+          <a href="https://www.centreforoptimism.com" target="_blank" class="hover:text-white">Centre for Optimism</a>
+        </div>
+      </div>
+      <div class="pt-6 text-xs text-purple-300/80">
+        © <script>document.write(new Date().getFullYear())</script> Optimistic Africa. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts for Standalone HTML -->
+  <script>
+    // 1. Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / scrollTotal) * 100;
+      document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+
+    // 2. Accordion Function
+    function toggleAccordion(id) {
+      const body = document.getElementById(id + '-body');
+      if (body) {
+        body.classList.toggle('hidden');
+      }
+    }
+
+    // 3. Quiz Data and Engine
+    const sampleQuestions = [
+      {
+        q: "What percentage of sub-Saharan African youth (18-24) intend to start their own business in the next 5 years?",
+        o: ["22%", "44%", "58%", "75%+"],
+        a: 3,
+        tier: "Capabilities",
+        e: "Over 75% of young Africans intend to start a business, making Africa the most entrepreneurial region on Earth."
+      },
+      {
+        q: "How many African countries rank inside the world's top 100 most peaceful societies on the Global Peace Index?",
+        o: ["6 countries", "12 countries", "21 countries", "35 countries"],
+        a: 2,
+        tier: "Foundations",
+        e: "21 African nations rank inside the world's top 100 most peaceful, with Mauritius (#28) outranking the UK, France, and USA."
+      },
+      {
+        q: "How much did Africans in the diaspora send home in remittances in 2024?",
+        o: ["$24 Billion", "$53 Billion", "$104 Billion", "$190 Billion"],
+        a: 2,
+        tier: "Foundations",
+        e: "Remittances reached an extraordinary $104 billion in 2024, far exceeding foreign development aid and foreign direct investment combined."
+      },
+      {
+        q: "How much has extreme poverty fallen in Morocco over the last two decades?",
+        o: ["From 15.3% to 0.9%", "From 25% to 18%", "From 8% to 6%", "Unchanged"],
+        a: 0,
+        tier: "Outcomes",
+        e: "Morocco achieved a historic 94%+ reduction in extreme poverty, dropping from 15.3% down to 0.9%."
+      },
+      {
+        q: "What share of global mobile money transactions are processed in Africa today?",
+        o: ["Around 20%", "Around 40%", "Over 70%", "Under 15%"],
+        a: 2,
+        tier: "Capabilities",
+        e: "Africa processes over 70% of the entire world's mobile money transactions, leapfrogging legacy financial rails."
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    function startQuiz() {
+      currentQ = 0;
+      score = 0;
+      document.getElementById('quizIntro').classList.add('hidden');
+      document.getElementById('quizResults').classList.add('hidden');
+      document.getElementById('quizActive').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = sampleQuestions[currentQ];
+      document.getElementById('quizTierLabel').innerText = q.tier;
+      document.getElementById('quizProgressLabel').innerText = `Question ${currentQ + 1} of ${sampleQuestions.length}`;
+      document.getElementById('quizQuestionText').innerText = q.q;
+      document.getElementById('quizFeedback').classList.add('hidden');
+
+      const container = document.getElementById('quizOptionsContainer');
+      container.innerHTML = '';
+      q.o.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-2xl border border-white/20 bg-white/10 hover:bg-white/20 text-white font-medium flex items-center gap-3 transition-colors cursor-pointer";
+        btn.innerHTML = `<span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">${String.fromCharCode(65 + idx)}</span><span>${opt}</span>`;
+        btn.onclick = () => selectOption(idx);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectOption(optIdx) {
+      const q = sampleQuestions[currentQ];
+      const isCorrect = optIdx === q.a;
+      if (isCorrect) score++;
+
+      const feedback = document.getElementById('quizFeedback');
+      const tag = document.getElementById('quizResultTag');
+      tag.innerText = isCorrect ? "✓ Correct" : "✗ Not quite";
+      tag.className = isCorrect ? "text-xs font-bold uppercase inline-block px-3 py-1 rounded bg-emerald-500" : "text-xs font-bold uppercase inline-block px-3 py-1 rounded bg-rose-500";
+      document.getElementById('quizExplanationText').innerText = q.e;
+      feedback.classList.remove('hidden');
+
+      // Disable option buttons
+      const btns = document.getElementById('quizOptionsContainer').querySelectorAll('button');
+      btns.forEach(b => b.disabled = true);
+    }
+
+    function nextQuestion() {
+      currentQ++;
+      if (currentQ < sampleQuestions.length) {
+        renderQuestion();
+      } else {
+        document.getElementById('quizActive').classList.add('hidden');
+        document.getElementById('quizResults').classList.remove('hidden');
+        document.getElementById('quizFinalScore').innerText = `${score} / ${sampleQuestions.length}`;
+      }
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      alert("Thank you! You have been added to the priority notification list.");
+    }
+  </script>
+</body>
+</html>
