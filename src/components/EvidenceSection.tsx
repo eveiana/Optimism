@@ -137,7 +137,7 @@ export const EvidenceSection: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.8, 0.26, 0.99] }}
               className="relative rounded-[32px] p-7 sm:p-9 bg-[#9A9318] text-white shadow-2xl flex flex-col justify-between z-20"
             >
-              {/* Crisp SVG Leaping Figure (enlarged, bridging Card 2 and Card 3 with one leg in each) */}
+              {/* Crisp SVG Leaping Figure (enlarged, bridging Card 2 and Card 3) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 14 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -268,7 +268,7 @@ export const EvidenceSection: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Bar 2: US avg. (2.6%, Plum #4A154B) - Corrected from hallucinated 7.6 */}
+                    {/* Bar 2: US avg. (2.6%, Plum #4A154B) */}
                     <div className="flex-1 flex flex-col items-center h-full justify-end">
                       <span className="text-[11px] font-bold text-white font-mono mb-1">
                         2.6
@@ -285,7 +285,7 @@ export const EvidenceSection: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Bar 3: OECD avg. (1.7%, Lime Green #84CC16) - Corrected from hallucinated 7.1 */}
+                    {/* Bar 3: OECD avg. (1.7%, Lime Green #84CC16) */}
                     <div className="flex-1 flex flex-col items-center h-full justify-end">
                       <span className="text-[11px] font-bold text-white font-mono mb-1">
                         1.7
