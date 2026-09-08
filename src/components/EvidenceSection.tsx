@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import birdImg from '../assets/images/bird.png';
-import girlImg from '../assets/images/girl.png';
+import girlImg from '../assets/images/Girl.png';
 
 export const EvidenceSection: React.FC = () => {
   return (
