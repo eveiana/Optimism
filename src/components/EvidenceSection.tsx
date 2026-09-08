@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import birdImg from '../assets/images/bird.png';
-import girlImg from '../assets/images/girl.png';
+import girlImg from '../assets/images/girl.svg';
 
 export const EvidenceSection: React.FC = () => {
   return (
@@ -137,7 +137,7 @@ export const EvidenceSection: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.8, 0.26, 0.99] }}
               className="relative rounded-[32px] p-7 sm:p-9 bg-[#9A9318] text-white shadow-2xl flex flex-col justify-between z-20"
             >
-              {/* Authentic Leaping Figure (enlarged, bridging Card 2 and Card 3 with one leg in each) */}
+              {/* Crisp SVG Leaping Figure (enlarged, bridging Card 2 and Card 3 with one leg in each) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 14 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -147,8 +147,8 @@ export const EvidenceSection: React.FC = () => {
               >
                 <img
                   src={girlImg}
-                  alt="Authentic Leaping Figure with Streamers"
-                  className="w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] filter contrast-[1.05] brightness-[1.02]"
+                  alt="Celebrating Woman with Streamers - Leaping Figure"
+                  className="w-full h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] filter contrast-[1.1] brightness-[1.05]"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
